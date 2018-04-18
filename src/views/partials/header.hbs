@@ -1,0 +1,23 @@
+<header class="navbar">
+  <div class="navbar__home">
+    <img alt="LVKI Blogger">
+  </div>
+  {{#if loggedIn}}
+  <div class="navbar__user">
+    <img>
+    <span></span>
+    <a href="/logout">
+      Logout
+    </a>
+  </div>
+  {{else}}
+  <div class="navbar__auth">
+    <a href="/login">
+      Login
+    </a>
+    <a href="/signup">
+      Sign-up
+    </a>
+  </div>
+  {{/if}}
+</header>
