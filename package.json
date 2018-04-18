@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "start:watch": "nodemon src/index.js",
+    "test:watch": "NODE_ENV=test nodemon src/tests/*.js | tap-spec",
+    "test": "NODE_ENV=test node src/tests/*.js | tap-spec",
+    "pretest": "NODE_ENV=test npm run build:db",
+    "build:db": "node src/model/database/db_build.js"
   },
   "repository": {
     "type": "git",
