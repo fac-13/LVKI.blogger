@@ -1,4 +1,5 @@
 const app = require('./app');
+
 const port = app.get('port');
 const host = app.get('host');
 
