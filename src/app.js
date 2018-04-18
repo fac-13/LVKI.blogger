@@ -1,5 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const favicon = require('serve-favicon');
 const path = require('path');
 require('env2')('./.env');
 
@@ -17,12 +18,16 @@ app.engine(
     layoutsDir: path.join(__dirname, 'views', 'layouts'),
     partialsDir: path.join(__dirname, 'views', 'partials'),
     defaultLayout: 'main',
-    helpers
-  })
+    helpers,
+  }),
 );
 
 app.set('host', process.env.HOST || 'localhost');
 app.set('port', process.env.PORT || 3000);
+
+app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
 app.use(controllers);
 
 module.exports = app;
