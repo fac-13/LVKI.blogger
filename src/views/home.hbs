@@ -1,0 +1,17 @@
+<section class="main__body">
+  <ul class="main__posts">
+    {{#each posts}}
+    <li class="post">
+      <h2 class="post__title">{{this.title}}</h2>
+      <p class="post__date"></p>
+      <p class="post__content">{{this.content}}</p>
+      <div class="post__author">
+        <img class="post__author__avatar" href="https://sigil.cupcake.io/{{this.author_name}}">
+        <span class="post__author__username">{{this.author_name}}</span>
+      </div>
+      <span>{{this.num_contents}}</span>
+    </li>
+    {{/each}}
+  </ul>
+
+</section>
