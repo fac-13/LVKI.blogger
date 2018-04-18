@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
-    "start:watch": "nodemon src/index.js"
+    "start:watch": "nodemon src/index.js",
+    "test:watch": "NODE_ENV=test nodemon src/tests/*.js | tap-spec",
+    "test": "NODE_ENV=test node src/tests/*.js | tap-spec",
+    "pretest": "NODE_ENV=test npm run build:db",
+    "build:db": "node src/model/database/db_build.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +29,7 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "pg": "^7.4.1",
-    "pg-promise": "^8.3.1",
+    "pg-promise": "^8.3.2",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
