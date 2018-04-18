@@ -5,7 +5,7 @@ const url = require('url');
 require('env2')('./.env');
 
 let DB_URL = process.env.DATABASE_URL;
-if (process.env.NODE_ENV='test'){
+if (process.env.NODE_ENV === 'test') {
   DB_URL = process.env.TEST_DATABASE_URL;
 }
 
@@ -15,23 +15,20 @@ const params = url.parse(DB_URL);
 const [username, password] = params.auth.split(':');
 console.log(params.hostname);
 
-const options = {
-    host: 'localhost',
-    port: params.port,
-    database: params.pathname.split('/')[1],
-    max: process.env.DB_MAX_CONNECTIONS || 2,
-    user: username,
-    password,
-    ssl: params.hostname !== 'localhost',
+let options = {
+  host: 'localhost',
+  port: params.port,
+  database: params.pathname.split('/')[1],
+  max: process.env.DB_MAX_CONNECTIONS || 2,
+  user: username,
+  password,
+  ssl: params.hostname !== 'localhost',
+};
+
+if (process.env.TRAVIS === 'true') {
+  options = {
+    database: 'travis_ci_test',
+    user: 'postgres',
   };
-  
-  if(process.env.TRAVIS === "true") {
-    options = {
-      database: 'travis_ci_test',
-      user: 'postgres'
-    }
-  }
-  module.exports = pgp(options);
-
-
-  
+}
+module.exports = pgp(options);
