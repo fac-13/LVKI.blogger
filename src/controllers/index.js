@@ -1,13 +1,14 @@
 const express = require('express');
 const path = require('path');
+
 const router = express.Router();
 
 // import route controllers
 const home = require('./home');
 const post = require('./post');
-//const signup = require('./signup');
-//const login = require('./login');
-//const error = require('./error');
+// const signup = require('./signup');
+// const login = require('./login');
+// const error = require('./error');
 
 // routes
 router.get('/', home.get);
