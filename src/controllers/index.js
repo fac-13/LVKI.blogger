@@ -17,10 +17,11 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 // cookies
-router.use(cookieSesson({
-  name: 
-}))
-
+router.use(
+  cookieSesson({
+    name: ''
+  })
+);
 
 // routes
 router.get('/', home.get);
