@@ -1,5 +1,5 @@
 const userLogIn = require('../model/queries/userLogIn');
-const cookieSesson = require('cookie-session');
+const cookieSession = require('cookie-session');
 const bcrypt = require('bcryptjs');
 
 exports.get = (req, res) => {
@@ -9,7 +9,6 @@ exports.get = (req, res) => {
 exports.post = (req, res) => {
   console.log('req', req.body);
   const userDetails = req.body;
-
 
   userLogIn(userDetails.username)
     .then((queryRes) => {
