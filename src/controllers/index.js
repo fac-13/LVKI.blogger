@@ -18,8 +18,9 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 // cookies
 router.use(cookieSesson({
-  name: 
-}))
+  name: 'user_session',
+  secret: process.env.SECRET,
+}));
 
 
 // routes
