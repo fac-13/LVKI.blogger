@@ -1,3 +1,4 @@
+{{>blog}}
 <section class="main__body">
   <ul class="main__posts">
     {{#each posts}}
@@ -6,8 +7,9 @@
       <p class="post__date"></p>
       <p class="post__content">{{this.content}}</p>
       <div class="post__author">
-        <img class="post__author__avatar" href="https://sigil.cupcake.io/{{this.author_name}}">
-        <span class="post__author__username">{{this.author_name}}</span>
+        <img heigth=20 width=20 class="post__author__avatar" src="https://sigil.cupcake.io/{{this.username}}">
+        <span class="post__author__username">{{this.username}}</span>
+        <span class="post__timestamp">{{dateformatter this.posted_at}}</span>
       </div>
       <span>{{this.num_comments}}</span>
     </li>
