@@ -5,6 +5,7 @@ const url = require('url');
 require('env2')('./.env');
 
 let DB_URL = process.env.DATABASE_URL;
+
 if (process.env.NODE_ENV === 'test') {
   DB_URL = process.env.TEST_DATABASE_URL;
 }
@@ -13,7 +14,7 @@ if (!DB_URL) throw new Error('Enviroment variable DATABASE_URL must be set');
 
 const params = url.parse(DB_URL);
 const [username, password] = params.auth.split(':');
-console.log(params.hostname);
+
 
 let options = {
   host: 'localhost',
