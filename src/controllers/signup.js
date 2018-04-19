@@ -6,7 +6,7 @@ exports.get = (req, res) => {
 };
 
 exports.post = (req, res) => {
-  const userDetails = req.body;
+  const userDetails = req.body; //use destructuring
   bcrypt
     .hash(userDetails.password, 10)
     .then(hash => userSignUp(userDetails.username, hash))
