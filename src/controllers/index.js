@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieSesson = require('cookie-session');
 
 const router = express.Router();
 
@@ -8,6 +10,17 @@ const post = require('./post');
 const signup = require('./signup');
 const login = require('./login');
 const error = require('./error');
+
+// parse incoming json
+router.use(bodyParser.json());
+// parse urlencoded bodies
+router.use(bodyParser.urlencoded({ extended: false }));
+
+// cookies
+router.use(cookieSesson({
+  name: 
+}))
+
 
 // routes
 router.get('/', home.get);
