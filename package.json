@@ -23,6 +23,7 @@
   "homepage": "https://github.com/fac-13/LVKI.blogger#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
     "cookie-session": "^2.0.0-beta.3",
     "env2": "^2.2.0",
     "express": "^4.16.3",
