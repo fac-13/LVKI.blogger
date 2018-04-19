@@ -7,6 +7,7 @@ test('Test if supertest is working', (t) => {
     .get('/')
     .expect(200)
     .end((err, res) => {
+      t.ok(res);
       t.error(err, 'status should be 200');
       t.end();
     });
@@ -17,6 +18,7 @@ test('Test if home route returns html', (t) => {
     .get('/')
     .expect('Content-Type', /html/)
     .end((err, res) => {
+      t.ok(res);
       t.error(err, 'content type should be html');
       t.end();
     });
@@ -27,6 +29,7 @@ test('Test if post route is working', (t) => {
     .get('/post/1/hello')
     .expect(200)
     .end((err, res) => {
+      t.ok(res);
       t.error(err, 'status should be 200');
       t.end();
     });
@@ -37,6 +40,7 @@ test('Test if post route returns html', (t) => {
     .get('/post/1/hello')
     .expect('Content-Type', /html/)
     .end((err, res) => {
+      t.ok(res);
       t.error(err, 'content type should be html');
       t.end();
     });
