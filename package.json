@@ -8,7 +8,6 @@
     "start:watch": "nodemon src/index.js",
     "test:watch": "NODE_ENV=test nodemon src/tests/*.js | tap-spec",
     "test": "NODE_ENV=test nyc node src/tests/*.js | tap-spec",
-    "pretest": "NODE_ENV=test npm run build:db",
     "build:db": "node src/model/database/db_build.js"
   },
   "repository": {
