@@ -13,14 +13,6 @@ db
   })
   .catch(e => console.error('error', e));
 
-const runDbBuild = () => {
-  db
-    .query(build)
-    .then((res) => {
-      console.log('res', res);
-      //   callback();
-    })
-    .catch(e => console.error('error', e));
-};
+const runDbBuild = () => db.query(build);
 
 module.exports = runDbBuild;
