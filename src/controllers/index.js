@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cookieSesson = require('cookie-session');
+const cookieSession = require('cookie-session');
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 // cookies
-router.use(cookieSesson({ name: 'user_session', secret: process.env.SECRET }));
+router.use(cookieSession({ name: 'user_session', secret: process.env.SECRET }));
 
 // routes
 router.get('/', home.get);
