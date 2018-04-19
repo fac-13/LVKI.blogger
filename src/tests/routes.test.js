@@ -91,3 +91,13 @@ test('Test if post route is working', (t) => {
       t.end();
     });
 });
+
+test('Test if post route returns html with post title', (t) => {
+  request(app)
+    .get('/jkask')
+    .expect(404)
+    .end((err, res) => {
+      t.ok(res.text.includes('cannot find'));
+      t.end();
+    });
+});
