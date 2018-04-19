@@ -1,3 +1,5 @@
 exports.get = (req, res) => {
-  res.render('post', { title: 'hello' });
+  const { id, title } = req.params;
+  // should call a query to get post info using id
+  res.render('post', { title });
 };
