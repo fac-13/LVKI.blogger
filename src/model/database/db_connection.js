@@ -15,7 +15,7 @@ if (!DB_URL) throw new Error('Enviroment variable DATABASE_URL must be set');
 const params = url.parse(DB_URL);
 const [username, password] = params.auth.split(':');
 
-let options = {
+const options = {
   host: 'localhost',
   port: params.port,
   database: params.pathname.split('/')[1],
@@ -24,12 +24,11 @@ let options = {
   password,
   ssl: params.hostname !== 'localhost',
 };
-console.log(options.password);
 
-if (process.env.TRAVIS === 'true') {
-  options = {
-    database: 'travis_ci_test',
-    user: 'postgres',
-  };
-}
+// if (process.env.TRAVIS === 'true') {
+//   options = {
+//     database: 'travis_ci_test',
+//     user: 'postgres',
+//   };
+// }
 module.exports = pgp(options);
