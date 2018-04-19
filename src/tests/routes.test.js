@@ -80,8 +80,56 @@ test('Test if post route returns html with post title', (t) => {
     });
 });
 
+// GET /login
+test('Test if login GET route is working', (t) => {
+  request(app)
+    .get('/login')
+    .expect(200)
+    .end((err, res) => {
+      t.ok(res.text.includes('form'), 'login page has a form');
+      t.error(err, 'status should be 200');
+      t.end();
+    });
+});
+
+// POST /login
+test('Test if login POST route is working', (t) => {
+  request(app)
+    .post('/login')
+    .expect(302)
+    .end((err, res) => {
+      // t.ok(res.text.includes('form'), 'login page has a form');
+      t.error(err, 'status should be 302');
+      t.end();
+    });
+});
+
+// GET /signup
+test('Test if login GET route is working', (t) => {
+  request(app)
+    .get('/login')
+    .expect(200)
+    .end((err, res) => {
+      t.ok(res.text.includes('form'), 'login page has a form');
+      t.error(err, 'status should be 200');
+      t.end();
+    });
+});
+
+// POST /signup
+test('Test if login POST route is working', (t) => {
+  request(app)
+    .post('/login')
+    .expect(302)
+    .end((err, res) => {
+      // t.ok(res.text.includes('form'), 'login page has a form');
+      t.error(err, 'status should be 302');
+      t.end();
+    });
+});
+
 // 404 error
-test('Test if post route is working', (t) => {
+test('Test if bad route is 404', (t) => {
   request(app)
     .get('/akjkl')
     .expect(404)
@@ -92,12 +140,12 @@ test('Test if post route is working', (t) => {
     });
 });
 
-test('Test if post route returns html with post title', (t) => {
+test('Test if bad route returns html with error message', (t) => {
   request(app)
     .get('/jkask')
     .expect(404)
     .end((err, res) => {
-      t.ok(res.text.includes('cannot find'));
+      t.ok(res.text.includes('Page not found'));
       t.end();
     });
 });
