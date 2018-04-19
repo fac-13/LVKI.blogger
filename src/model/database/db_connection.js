@@ -24,7 +24,6 @@ let options = {
   password,
   ssl: params.hostname !== 'localhost',
 };
-console.log(options.password);
 
 if (process.env.TRAVIS === 'true') {
   options = {

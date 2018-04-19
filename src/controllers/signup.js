@@ -6,10 +6,10 @@ exports.get = (req, res) => {
 };
 
 exports.post = (req, res) => {
-  const userDetails = req.body;
+  const { password, username } = req.body;
   bcrypt
-    .hash(userDetails.password, 10)
-    .then(hash => userSignUp(userDetails.username, hash))
+    .hash(password, 10)
+    .then(hash => userSignUp(username, hash))
     .then(() => {
       res.redirect('/');
     })
