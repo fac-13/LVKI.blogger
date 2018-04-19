@@ -17,11 +17,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 // cookies
-router.use(cookieSesson({
-  name: 'user_session',
-  secret: process.env.SECRET,
-}));
-
+router.use(cookieSesson({ name: 'user_session', secret: process.env.SECRET }));
 
 // routes
 router.get('/', home.get);

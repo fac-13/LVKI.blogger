@@ -16,7 +16,7 @@ const params = url.parse(DB_URL);
 const [username, password] = params.auth.split(':');
 
 let options = {
-  host: 'localhost',
+  host: params.hostname,
   port: params.port,
   database: params.pathname.split('/')[1],
   max: process.env.DB_MAX_CONNECTIONS || 2,
