@@ -19,14 +19,9 @@ exports.post = (req, res) => {
       .then(() => {
         res.redirect('/');
       })
-      .catch((error) => {
-        console.log(error.detail);
-        let errorMessage = '';
-        if (error.detail.includes('already')) {
-          errorMessage = `Username ${username} already exists`;
-        }
+      .catch(() => {
         res.render('signup', {
-          errorMessage,
+          errorMessage: `Username ${username} already exists`,
         });
       });
   }
