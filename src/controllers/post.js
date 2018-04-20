@@ -18,7 +18,7 @@ exports.post = (req, res) => {
         const { id } = res[0];
         return postBlog(id, title, content);
       })
-      .then(postTitle => res.status(201).json(postTitle))
+      .then(postTitle => res.status(201).json(postTitle[0]))
       .catch((error) => {
         console.log('error adding a post', error);
       });

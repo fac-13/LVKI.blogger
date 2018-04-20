@@ -7,7 +7,6 @@ const runDbBuild = require('../model/database/db_build');
 
 
 const userSignUp = require('../model/queries/userSignUp');
-const userLogIn = require('../model/queries/userLogIn');
 const bcrypt = require('bcryptjs');
 
 const { log: _ } = console;
@@ -34,11 +33,12 @@ test.only('Testing adding a new post', (t) => {
             .send({ title: 'First Post', content: 'I love code' })
             .set('cookie', cookie)
             .expect(201)
-            .end((err, res) => {
-              t.error(err, 'post has been added');
+            .end((postErr, postRes) => {
+              t.error(postErr, 'Blog post added successfully');
+              const { title: actual } = postRes.body;
+              const expected = 'First Post';
+              t.equal(actual, expected, 'Creating a post responds with title of the post');
             });
-
-
           t.end();
         });
     })
