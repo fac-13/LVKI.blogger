@@ -1,5 +1,4 @@
 const userLogIn = require('../model/queries/userLogIn');
-const cookieSession = require('cookie-session');
 const bcrypt = require('bcryptjs');
 
 exports.get = (req, res) => {
@@ -8,19 +7,19 @@ exports.get = (req, res) => {
 
 exports.post = (req, res) => {
   console.log('req', req.body);
-  const userDetails = req.body;
+  const { username, password } = req.body;
 
-  userLogIn(userDetails.username)
+  userLogIn(username)
     .then((queryRes) => {
       console.log(queryRes);
       const hash = queryRes[0].hash_password;
-      return bcrypt.compare(userDetails.password, hash);
+      return bcrypt.compare(password, hash);
     })
     .then((verified) => {
       if (verified) {
         // issue cookie
         console.log('verified:', verified);
-        req.session.username = userDetails.username;
+        req.session.username = username;
         req.session.loggedIn = true;
         res.redirect('/');
       } else {
@@ -28,5 +27,7 @@ exports.post = (req, res) => {
         res.send('Access DENIED');
       }
     })
-    .catch(error => console.log(error));
+    .catch((error) => {
+      res.status(401).send('Login Failed');
+    });
 };
