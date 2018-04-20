@@ -7,6 +7,7 @@ exports.get = (req, res) => {
 
 exports.post = (req, res) => {
   const { username, password } = req.body;
+  console.log(req.body);
 
   userLogIn(username)
     .then((queryRes) => {
