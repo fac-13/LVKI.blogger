@@ -23,6 +23,7 @@ router.use(cookieSession({ name: 'user_session', secret: process.env.SECRET }));
 // routes
 router.get('/', home.get);
 router.get('/post/:id/:title', post.get);
+router.post('/post', post.post);
 router.get('/signup', signup.get);
 router.post('/signup', signup.post);
 router.get('/login', login.get);

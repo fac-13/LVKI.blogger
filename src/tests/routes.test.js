@@ -3,17 +3,6 @@ const request = require('supertest');
 const app = require('./../app.js');
 
 // / 'home' route
-test('Test if supertest is working', (t) => {
-  request(app)
-    .get('/')
-    .expect(200)
-    .end((err, res) => {
-      t.ok(res);
-      t.error(err, 'status should be 200');
-      t.end();
-    });
-});
-
 test('Test if home route returns html', (t) => {
   request(app)
     .get('/')
@@ -26,18 +15,6 @@ test('Test if home route returns html', (t) => {
     });
 });
 
-// /post/:id/:title route
-test('Test if post route is working', (t) => {
-  request(app)
-    .get('/post/1/hello')
-    .expect(200)
-    .end((err, res) => {
-      t.ok(res);
-      t.error(err, 'status should be 200');
-      t.end();
-    });
-});
-
 test('Test if post route returns a html content-type', (t) => {
   request(app)
     .get('/post/1/hello')
@@ -46,16 +23,6 @@ test('Test if post route returns a html content-type', (t) => {
     .end((err, res) => {
       t.ok(res);
       t.error(err, 'content type should be html');
-      t.end();
-    });
-});
-
-test('Test if post route returns html as a string', (t) => {
-  request(app)
-    .get('/post/1/hello')
-    .expect('Content-Type', /html/)
-    .end((err, res) => {
-      t.equal(typeof res.text, 'string', 'res text should be a string');
       t.end();
     });
 });
@@ -80,7 +47,7 @@ test('Test if post route returns html with post title', (t) => {
     });
 });
 
-// GET /login
+// GET /login - need to send data in request!
 test('Test if login GET route is working', (t) => {
   request(app)
     .get('/login')
@@ -88,18 +55,6 @@ test('Test if login GET route is working', (t) => {
     .end((err, res) => {
       t.ok(res.text.includes('form'), 'login page has a form');
       t.error(err, 'status should be 200');
-      t.end();
-    });
-});
-
-// POST /login
-test('Test if login POST route is working', (t) => {
-  request(app)
-    .post('/login')
-    .expect(302)
-    .end((err, res) => {
-      // t.ok(res.text.includes('form'), 'login page has a form');
-      t.error(err, 'status should be 302');
       t.end();
     });
 });
@@ -112,18 +67,6 @@ test('Test if login GET route is working', (t) => {
     .end((err, res) => {
       t.ok(res.text.includes('form'), 'login page has a form');
       t.error(err, 'status should be 200');
-      t.end();
-    });
-});
-
-// POST /signup
-test('Test if login POST route is working', (t) => {
-  request(app)
-    .post('/login')
-    .expect(302)
-    .end((err, res) => {
-      // t.ok(res.text.includes('form'), 'login page has a form');
-      t.error(err, 'status should be 302');
       t.end();
     });
 });
