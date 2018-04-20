@@ -1,24 +1,16 @@
 const getAllPosts = require('./../model/queries/getAllPosts');
 
 exports.get = (req, res) => {
-  if (req.session.length > 0) {
-    const { username, loggedIn } = req.session;
-    getAllPosts()
-      .then((queryRes) => {
-        const posts = JSON.parse(JSON.stringify(queryRes));
+  const { username, loggedIn } = req.session;
+  getAllPosts()
+    .then((posts) => {
+      if (req.session.length > 0) {
         res.render('home', { posts, username, loggedIn });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  } else {
-    getAllPosts()
-      .then((queryRes) => {
-        const posts = JSON.parse(JSON.stringify(queryRes));
+      } else {
         res.render('home', { posts });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
