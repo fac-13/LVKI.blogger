@@ -5,5 +5,8 @@
     <label for="password">Password</label>
     <input id="password" name="password" type="password" class="login__password" required>
     <input type="submit" value="Login"></input>
+    {{#if errorMessage}}
+    <span>{{errorMessage}}</span>
+    {{/if}}
   </form>
 </section>
