@@ -1,19 +1,19 @@
 <header class="navbar">
-  <div class="navbar__home">
+  <div class="navbar__left">
     <a href="/">
-      <img alt="LVKI Blogger">
+      <img class="navbar__logo" src="/logo.png" alt="LVKI Blogger">
     </a>
   </div>
   {{#if loggedIn}}
-  <div class="navbar__user">
-    <img height=70 width=70 class="navbar__user__avatar" src="https://sigil.cupcake.io/{{username}}">
-    <span>{{username}}</span>
+  <div class="navbar__right">
+    <img height=50 width=50 class="navbar__user-avatar" src="https://sigil.cupcake.io/{{username}}">
+    <span class="navbar__username">{{username}}</span>
     <a href="/logout">
       Logout
     </a>
   </div>
   {{else}}
-  <div class="navbar__auth">
+  <div class="navbar__right">
     <a href="/login">
       Login
     </a>
