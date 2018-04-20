@@ -9,25 +9,17 @@ exports.get = (req, res) => {
 };
 
 exports.post = (req, res) => {
-  // console.log(req.session);
   const { title, content } = req.body;
   // console.log('post headers', Object.keys(req.headers));
-
   if (req.session.username) {
-    console.log('we have a cookie', req.session);
     const { username } = req.session;
-
     getUserId(username)
       .then((res) => {
-        const userId = res[0].id;
-        console.log('userId', userId);
-        return postBlog(userId, title, content);
+        const { id } = res[0];
+        return postBlog(id, title, content);
       })
-      .then((title) => {
-        res.status(201).json(title);
-      })
+      .then(postTitle => res.status(201).json(postTitle))
       .catch((error) => {
-        console.log();
         console.log('error adding a post', error);
       });
   } else {
