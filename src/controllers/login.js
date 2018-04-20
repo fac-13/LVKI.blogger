@@ -1,5 +1,4 @@
 const userLogIn = require('../model/queries/userLogIn');
-const cookieSession = require('cookie-session');
 const bcrypt = require('bcryptjs');
 
 exports.get = (req, res) => {
