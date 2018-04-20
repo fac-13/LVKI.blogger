@@ -1,4 +1,8 @@
-{{>blog}}
+
+{{#if loggedIn}}
+{{>submitBlogPost}}
+{{/if}}
+
 <section class="main__body">
   <ul class="main__posts">
     {{#each posts}}
