@@ -10,7 +10,7 @@ const userSignUp = require('../model/queries/userSignUp');
 const bcrypt = require('bcryptjs');
 
 const { log: _ } = console;
-test.only('Testing adding a new post', (t) => {
+test('Testing adding a new post', (t) => {
   runDbBuild()
     .then((res) => {
       _('built test db', res);
