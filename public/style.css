@@ -1,0 +1,91 @@
+/* SETUP */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img,
+video,
+audio {
+  width: auto;
+  max-height: 100%;
+}
+
+/* MODIFIERS*/
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, “Roboto”, “Oxygen”,
+    “Ubuntu”, “Cantarell”, “Fira Sans”, “Droid Sans”, “Helvetica Neue”,
+    sans-serif;
+  background-color:hsl(61, 100%, 98%);
+  margin: 0;
+}
+/* HEADER / NAVBAR */
+
+.navbar {
+  width: 100%;
+  height: auto;
+  background-color:#c2e2aac4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+}
+
+.navbar__logo {
+    width: auto;
+    max-height: 2rem;
+}
+
+.navbar__right {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  justify-content: space-between;
+  /* border: orangered 1px solid; */
+}
+
+.navbar__user-avatar {
+  display: inline;
+}
+
+.navbar__userinfo {
+  padding: .5rem;
+  background-color: hsl(61, 100%, 98%);
+  border-radius: 5px;
+}
+.navbar__authentication {
+  padding: .5rem;
+
+}
+
+/* MAIN */
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* BLOG POSTING FORM */
+
+/* FOOTER */
+
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin: 0 auto;
+  text-align: center;
+  font-size: .5rem;
+  background-color:#c2e2aac4;
+}
+

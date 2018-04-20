@@ -15,10 +15,14 @@ exports.post = (req, res) => {
     const { username } = req.session;
     getUserId(username)
       .then((res) => {
+        console.log('uname', username);
+        console.log(res);
         const { id } = res[0];
         return postBlog(id, title, content);
       })
-      .then(postTitle => res.status(201).json(postTitle[0]))
+      .then((postTitle) => {
+        res.status(201).redirect('/');
+      })
       .catch((error) => {
         console.log('error adding a post', error);
       });

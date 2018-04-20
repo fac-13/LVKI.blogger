@@ -4,7 +4,7 @@ const pgp = require('pg-promise')();
 const url = require('url');
 require('env2')('./.env');
 
-let DB_URL = process.env.DATABASE_URL;
+let DB_URL = process.env.LVKI_DB_URL;
 
 if (process.env.NODE_ENV === 'test') {
   DB_URL = process.env.TEST_DATABASE_URL;
