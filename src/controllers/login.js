@@ -10,22 +10,20 @@ exports.post = (req, res) => {
 
   getHashPassword(username)
     .then((queryRes) => {
-      console.log(queryRes);
-      if (queryRes === []) throw new Error('user does not exist');
+      if (queryRes.length === 0) throw new Error('User does not exist');
       const hash = queryRes[0].hash_password;
       return bcrypt.compare(password, hash);
     })
     .then((verified) => {
-      if (verified) {
-        // issue cookie
-        console.log('verified:', verified);
-        req.session.username = username;
-        req.session.loggedIn = true;
-        res.redirect('/');
-      } else {
-        // send error message
-        res.send('Access DENIED');
-      }
+      if (!verified) throw new Error('Password is incorrect');
+      // issue cookie
+      req.session.username = username;
+      req.session.loggedIn = true;
+      res.redirect('/');
     })
-    .catch(error => console.log(error));
+    .catch((error) => {
+      res.render('login', {
+        errorMessage: error.message,
+      });
+    });
 };

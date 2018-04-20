@@ -4,10 +4,9 @@
     {{#each posts}}
     <li class="post">
       <h2 class="post__title">{{this.title}}</h2>
-      <p class="post__date"></p>
       <p class="post__content">{{this.content}}</p>
       <div class="post__author">
-        <img heigth=20 width=20 class="post__author__avatar" src="https://sigil.cupcake.io/{{this.username}}">
+        <img height=20 width=20 class="post__author__avatar" src="https://sigil.cupcake.io/{{this.username}}">
         <span class="post__author__username">{{this.username}}</span>
         <span class="post__timestamp">{{dateformatter this.posted_at}}</span>
       </div>

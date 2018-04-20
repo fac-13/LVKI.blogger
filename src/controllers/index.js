@@ -9,6 +9,7 @@ const home = require('./home');
 const post = require('./post');
 const signup = require('./signup');
 const login = require('./login');
+const logout = require('./logout');
 const error = require('./error');
 
 // parse incoming json
@@ -26,6 +27,7 @@ router.get('/signup', signup.get);
 router.post('/signup', signup.post);
 router.get('/login', login.get);
 router.post('/login', login.post);
+router.get('/logout', logout.get);
 router.use(error.client);
 router.use(error.server);
 
