@@ -6,8 +6,10 @@
   "scripts": {
     "start": "node src/index.js",
     "start:watch": "nodemon src/index.js",
-    "test:watch": "NODE_ENV=test nodemon src/tests/*.js | tap-spec",
-    "test": "NODE_ENV=test nyc node src/tests/test.js | tap-spec",
+    "test:queries": "NODE_ENV=test nodemon src/tests/routes.test.js | tap-spec",
+    "test:routes": "NODE_ENV=test nodemon src/tests/routes.test.js | tap-spec",
+    "test:blog": "NODE_ENV=test nodemon src/tests/blog-post.test | tap-spec",
+    "test": "NODE_ENV=test nyc node src/tests/*.test.js | tap-spec",
     "build:db": "node src/model/database/db_build.js"
   },
   "repository": {
