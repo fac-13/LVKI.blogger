@@ -6,20 +6,24 @@
   </div>
   {{#if loggedIn}}
   <div class="navbar__right">
-    <img height=50 width=50 class="navbar__user-avatar" src="https://sigil.cupcake.io/{{username}}">
-    <span class="navbar__username">{{username}}</span>
-    <a href="/logout">
-      Logout
-    </a>
-  </div>
-  {{else}}
-  <div class="navbar__right">
-    <a href="/login">
-      Login
-    </a>
-    <a href="/signup">
-      Sign-up
-    </a>
+    <div class="navbar__userinfo">
+      <span class="navbar__username">{{username}}</span>
+      <img height=50 width=50 class="navbar__user-avatar" src="https://sigil.cupcake.io/{{username}}">
+    </div>
+    <div class="navbar__authentication">
+      <a href="/logout">
+        Logout
+      </a>
+    </div>
+    {{else}}
+    <div class="navbar__right">
+      <a href="/login">
+        Login
+      </a>
+      <a href="/signup">
+        Sign-up
+      </a>
+    </div>
   </div>
   {{/if}}
 </header>
